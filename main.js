@@ -86,3 +86,25 @@
 //     console.log(isi)
 //     p.innerHTML = isi
 // })
+
+function addTask() {
+    var taskInput = document.getElementById("task");
+    var taskText = taskInput.value.trim();
+    if (taskText === "") return;
+
+    var ul = document.getElementById("taskList");
+    var li = document.createElement("li");
+    li.innerHTML = '<input type="checkbox" onchange="toggleTask(this)"> ' + taskText + ' <button onclick="removeTask(this)">Delete</button>';
+    ul.appendChild(li);
+    taskInput.value = "";
+}
+
+function toggleTask(checkbox) {
+    var li = checkbox.parentNode;
+    li.classList.toggle("checked");
+}
+
+function removeTask(button) {
+    var li = button.parentNode;
+    li.remove();
+}
